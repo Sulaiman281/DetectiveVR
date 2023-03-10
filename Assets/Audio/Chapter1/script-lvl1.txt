@@ -1,0 +1,22 @@
+Environment changes
+- [ ]  replace audio with new one
+- [ ]  remove card: the one that’s on the desk that has text
+- [ ]  on question card, flip the yes/no buttons
+- [ ]  Remove the 'silent' text on the suspect.
+
+Audio in the folder: 
+Detective-1: Mr Colins, you are the primary suspect for the murder of Mr John Smith. You were the last person seen leaving his residence.
+Suspect-1: Yes, I was there. But i swear, he was alive when i left him and perfectly unharmed.
+Detective-2:Were you guys fighting? Had an arguement or a struggle of some kind?
+Suspect-2: No, I just went there to return something. I swear I didn't do anything.
+Detective-3:Forensics found this knife with the prints wiped and found foreign DNA underneath his nails, he scratched his assailant.
+Detective-4:Mr Colins... would you mind giving us your clothes and shoes for inspection?
+Suspect-3: I will not do or say anything until i get my lawyer physically present.
+
+Audio in the folder:
+Card-1: Welcome to scene 1. You will participate in helping the police determine whether the suspect is guilty. Pay close attention.
+Card-2: Please listen to the conversation between the two people and investigate the suspect. You can also take a look around to find a clue.
+Card-3: Now, inpsect the room for evidence. There are 3 clues, you only need to find 2. You can use the flashlight on the desk.
+
+Other modifications:
+in the level menu, the instruction card, "How to play: Find clue, use right hand to point and click."
