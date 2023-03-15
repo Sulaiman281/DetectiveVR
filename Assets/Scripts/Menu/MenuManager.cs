@@ -7,6 +7,8 @@ public class MenuManager : MonoBehaviour
     {
         InitSound();
         InitLevels();
+
+        
     }
 
     #region Menu SoundFX

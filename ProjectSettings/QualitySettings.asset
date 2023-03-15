@@ -129,7 +129,7 @@ QualitySettings:
     shadowCascade2Split: 0.33333334
     shadowCascade4Split: {x: 0.06666667, y: 0.2, z: 0.46666667}
     shadowmaskMode: 1
-    skinWeights: 255
+    skinWeights: 4
     textureQuality: 0
     anisotropicTextures: 2
     antiAliasing: 4
@@ -151,7 +151,7 @@ QualitySettings:
     asyncUploadBufferSize: 16
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
-    customRenderPipeline: {fileID: 11400000, guid: 9b9c0b62deeea4218843a7ad59325649,
+    customRenderPipeline: {fileID: 11400000, guid: fc75d228246156c4da3a6f075b7dd9c7,
       type: 2}
     excludedTargetPlatforms: []
   m_PerPlatformDefaultQuality:
