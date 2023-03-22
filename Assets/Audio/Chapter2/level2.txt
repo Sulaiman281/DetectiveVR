@@ -1,0 +1,8 @@
+subt1: Welcome, to scene 2. Go to the circle.
+subt2: On your controller you can slow down the scene by pressing the Y button. 3 times only
+subt3: A murder has been reported half a mile from here, the suspect went down this alley at the same time you were in it.
+subt4: The suspect has been apprehended and the murder weapon recovered, but we can't link the crime to the suspect, find the connection, show us your skills. 
+subt5: Looks like you missed something, try again.
+When they find all clues:
+subt6: Congratulations detective! You completed that level quite easily, but that was difficulty 2 out of 5. Care to try your skills on a 4 out of 5?
+Starts level 2.1 

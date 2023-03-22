@@ -9,6 +9,8 @@ public class Chapter1Manager : MonoBehaviour
 
     private int _index = -1;
 
+    public bool findClueStart { get; set; }
+
     public void ChangeText(int x)
     {
         _index += x;
@@ -30,5 +32,4 @@ public class Chapter1Manager : MonoBehaviour
     {
         subtitlesTMP.text = "";
     }
-
 }
