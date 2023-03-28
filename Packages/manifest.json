@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.naelstrof.skinnedmeshdecals": "https://github.com/naelstrof/SkinnedMeshDecals.git#upm",
     "com.samdriver.driven-decals": "https://github.com/Anatta336/driven-decals.git",
     "com.unity.animation.rigging": "1.1.1",
     "com.unity.collab-proxy": "2.0.0",

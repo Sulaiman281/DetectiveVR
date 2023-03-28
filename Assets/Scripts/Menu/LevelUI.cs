@@ -1,6 +1,8 @@
 using System;
+using Chapter1;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelUI : MonoBehaviour
@@ -25,6 +27,18 @@ public class LevelUI : MonoBehaviour
     public string levelDifficulty
     {
         set => levelDifficultyTMP.text = value;
+    }
+
+    public void SetChapter(Chapter chapter)
+    {
+        levelName = chapter.chapterName;
+        levelDifficulty = chapter.levelDifficulty;
+        levelThumbImg.texture = chapter.coverPic;
+        
+        playLvlBtn.onClick.AddListener(() =>
+        {
+            SceneManager.LoadScene(chapter.sceneBuildName);
+        });
     }
 
     private void Start()

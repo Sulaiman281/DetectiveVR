@@ -1,3 +1,4 @@
+using Chapter1;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,8 +8,6 @@ public class MenuManager : MonoBehaviour
     {
         InitSound();
         InitLevels();
-
-        
     }
 
     #region Menu SoundFX
@@ -38,10 +37,15 @@ public class MenuManager : MonoBehaviour
     private Transform content;
 
     [SerializeField] private GameObject levelUIPrefab;
+    [SerializeField] private Chapter[] chapters;
 
     private void InitLevels()
     {
         // load levels into UI
+        foreach (var chapter in chapters)
+        {
+            Instantiate(levelUIPrefab, content).GetComponent<LevelUI>().SetChapter(chapter);
+        }
     }
 
     #endregion

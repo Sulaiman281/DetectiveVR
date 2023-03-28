@@ -1,12 +1,5 @@
 {
   "dependencies": {
-    "com.naelstrof.skinnedmeshdecals": {
-      "version": "https://github.com/naelstrof/SkinnedMeshDecals.git#upm",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "667fa7fce907403d2780b9a6291b7c512c49b487"
-    },
     "com.samdriver.driven-decals": {
       "version": "https://github.com/Anatta336/driven-decals.git",
       "depth": 0,
