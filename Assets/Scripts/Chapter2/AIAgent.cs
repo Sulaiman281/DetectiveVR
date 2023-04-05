@@ -3,6 +3,7 @@ using UnityEngine.AI;
 
 public class AIAgent : MonoBehaviour
 {
+    [Header("Reference")]
     [SerializeField] private Animator animator;
     [SerializeField] private NavMeshAgent agent;
     

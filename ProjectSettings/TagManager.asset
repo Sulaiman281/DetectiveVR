@@ -16,8 +16,8 @@ TagManager:
   - 
   - Water
   - UI
-  - Clue
-  - ClueFinder
+  - Player
+  - IgnorePlayerCollision
   - 
   - 
   - 

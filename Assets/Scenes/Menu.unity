@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 1142795739717b94c894b5cfd75b238b, type: 2}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.033962253, g: 0.033962253, b: 0.033962253, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2454,12 +2454,12 @@ MonoBehaviour:
     levelDifficulty: Nancy Drew
     isLock: 0
     underDevelopment: 0
-  - coverPic: {fileID: 0}
+  - coverPic: {fileID: 2800000, guid: 9471d24c2fd835d46acbb16768d58dd5, type: 3}
     chapterName: Hanzai Machi
     sceneBuildName: Chapter2
     levelDifficulty: Sherlock Holmes
     isLock: 0
-    underDevelopment: 1
+    underDevelopment: 0
 --- !u!4 &903423422
 Transform:
   m_ObjectHideFlags: 0
@@ -2830,7 +2830,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1174911106}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.726, y: -0.415, z: -1.89}
+  m_LocalPosition: {x: -0.726, y: -0.454, z: -1.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -43,9 +43,17 @@ public class LevelUI : MonoBehaviour
 
     private void Start()
     {
-        if (levelLocked) lockMsg.text = "Level Locked";
-        if (underDevelopment) lockMsg.text = "Under Development";
-        lockPanel.gameObject.SetActive(levelLocked || underDevelopment);
-        playLvlBtn.gameObject.SetActive(!(levelLocked || underDevelopment));
+        if (levelLocked)
+        {
+            lockMsg.text = "Level Locked";
+            lockPanel.gameObject.SetActive(true);
+            playLvlBtn.gameObject.SetActive(false);
+        }
+        if (underDevelopment)
+        {
+            lockMsg.text = "Under Development";
+            lockPanel.gameObject.SetActive(true);
+            playLvlBtn.gameObject.SetActive(false);
+        }
     }
 }
