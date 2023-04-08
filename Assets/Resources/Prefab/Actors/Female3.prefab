@@ -75,9 +75,8 @@ GameObject:
   m_Component:
   - component: {fileID: 660449000453184444}
   - component: {fileID: 6902415181158793670}
-  - component: {fileID: -7611082041271781733}
   - component: {fileID: -5154506313041854457}
-  - component: {fileID: -947455768309582661}
+  - component: {fileID: -8375256547285069064}
   m_Layer: 0
   m_Name: Female3
   m_TagString: Untagged
@@ -112,7 +111,7 @@ Animator:
   m_GameObject: {fileID: 171614461280796934}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 2cc9b1d7e9e82b34e9c2035692ff0d4b, type: 3}
-  m_Controller: {fileID: 9100000, guid: aa706386a2d9f27458ae5ce5e2708584, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5fcd96a018225a84cb56a52e5aff8283, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -122,28 +121,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!195 &-7611082041271781733
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 171614461280796934}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 0.2
-  m_Acceleration: 0.8
-  avoidancePriority: 50
-  m_AngularSpeed: 60
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!114 &-5154506313041854457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,30 +134,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6902415181158793670}
-  agent: {fileID: -7611082041271781733}
---- !u!114 &-947455768309582661
-MonoBehaviour:
+  agent: {fileID: -8375256547285069064}
+--- !u!195 &-8375256547285069064
+NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171614461280796934}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41f006d6548124f44a00d997e88a4b1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  footSfx:
-  - {fileID: 8300000, guid: 72f526a6a9890f643a88e85a61c86c8a, type: 3}
-  - {fileID: 8300000, guid: 85016e0f2b01da248b9663dd49a161b0, type: 3}
-  - {fileID: 8300000, guid: 186de84b3207156479abe98f4958fed0, type: 3}
-  - {fileID: 8300000, guid: 1a91fcd19acf1e54bba0945d9f390849, type: 3}
-  - {fileID: 8300000, guid: 14e8a8d2158bec840b56c54f5266e692, type: 3}
-  - {fileID: 8300000, guid: 29841e7d5bbfb5b419c9ad16ca8bc4c1, type: 3}
-  - {fileID: 8300000, guid: dd1af302b8902684d9381de1f2d3a5af, type: 3}
-  - {fileID: 8300000, guid: 67c8b33e424ccdc4486edf538ab91c5a, type: 3}
-  - {fileID: 8300000, guid: 274649b0e221539409070ebf6c18918b, type: 3}
-  - {fileID: 8300000, guid: a3194b8bbc96ef84fab1f98f4b7dae3e, type: 3}
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 0.08
+  m_Acceleration: 0.01
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 1
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 1
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &801612160385995895
 GameObject:
   m_ObjectHideFlags: 0

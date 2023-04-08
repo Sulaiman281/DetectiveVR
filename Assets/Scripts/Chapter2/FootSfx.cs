@@ -6,6 +6,7 @@ public class FootSfx : MonoBehaviour
 
     public void OnFootStep()
     {
-        AudioSource.PlayClipAtPoint(footSfx[Random.Range(0, footSfx.Length)], transform.position);
+        if (Application.isEditor) return;
+        AudioSource.PlayClipAtPoint(footSfx[Random.Range(0, footSfx.Length)], transform.position, .6f);
     }
 }

@@ -20,11 +20,6 @@ public class AIAgent : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        _hasPurpose = false;
-    }
-
     private void OnValidate()
     {
         if (animator == null) animator = transform.GetComponent<Animator>();
@@ -39,6 +34,6 @@ public class AIAgent : MonoBehaviour
             destination = Chapter2Manager.instance.RandDestination;
         }
         // var currentSpeed = Mathf.Approximately(agent.velocity.magnitude, 0f) ? 0f : 1f;
-        animator.SetFloat("Speed", agent.velocity.magnitude > 0.1f ? 1f : 0f);
+        animator.SetFloat("Speed", agent.velocity.magnitude > 0.0f ? 1f : 0f);
     }
 }

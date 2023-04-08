@@ -998,9 +998,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5537087476928668737}
   - component: {fileID: 1889123076065803835}
-  - component: {fileID: -4230682565337228517}
   - component: {fileID: 959912457330919110}
   - component: {fileID: 5160170015128743183}
+  - component: {fileID: 8260830891935911031}
   m_Layer: 0
   m_Name: female4
   m_TagString: Untagged
@@ -1045,28 +1045,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!195 &-4230682565337228517
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5160139003951365883}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 0.2
-  m_Acceleration: 0.8
-  avoidancePriority: 50
-  m_AngularSpeed: 60
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!114 &959912457330919110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1080,7 +1058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1889123076065803835}
-  agent: {fileID: -4230682565337228517}
+  agent: {fileID: 8260830891935911031}
 --- !u!114 &5160170015128743183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1104,6 +1082,28 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 67c8b33e424ccdc4486edf538ab91c5a, type: 3}
   - {fileID: 8300000, guid: 274649b0e221539409070ebf6c18918b, type: 3}
   - {fileID: 8300000, guid: a3194b8bbc96ef84fab1f98f4b7dae3e, type: 3}
+--- !u!195 &8260830891935911031
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5160139003951365883}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 0.15
+  m_Acceleration: 0.2
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 1
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 1
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &5278839712046170604
 GameObject:
   m_ObjectHideFlags: 0

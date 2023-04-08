@@ -18,6 +18,8 @@ TagManager:
   - UI
   - Player
   - IgnorePlayerCollision
+  - Player
+  - DynamicPose
   - 
   - 
   - 
@@ -28,10 +30,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Grabbable
+  - Hand
   - 
   - 
   - 

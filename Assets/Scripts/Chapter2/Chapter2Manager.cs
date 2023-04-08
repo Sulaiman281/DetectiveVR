@@ -38,6 +38,7 @@ public class Chapter2Manager : Singleton<Chapter2Manager>
     [SerializeField] private float slowValue;
     [SerializeField] private int slowTimes;
     [SerializeField] private TMP_Text slowTMP;
+    [SerializeField] private float slowDuration;
     private int _slowActionPerformed;
 
     [SerializeField] private PlayableDirector director;
@@ -49,32 +50,22 @@ public class Chapter2Manager : Singleton<Chapter2Manager>
 
     public bool enteredInCircle { get; set; }
 
+    private int _foundClues;
     private void Start()
     {
         slowMotionAction.Enable();
         slowMotionAction.started += _ =>
         {
             if (_slowActionPerformed > slowTimes) return;
-            StartCoroutine(SlowTime(.35f));
+            StartCoroutine(SlowTime());
             _slowActionPerformed++;
-            slowTMP.text = $"Press Y Key To Slow Down the Game \n ({_slowActionPerformed}/{slowTimes})";
+            slowTMP.text = $"Press Left Trigger Key To Slow Down the Game \n ({_slowActionPerformed}/{slowTimes})";
         };
-        slowMotionAction.canceled += _ => { Time.timeScale = 1; };
         SpawnActors();
+        // slowMotionAction.canceled += _ => { Time.timeScale = 1; };
         sunRotation.Rotate(new Vector3(Random.Range(-180, 180), 0, 0));
 
-        // StartCoroutine(DelayMethod(()=>
-        // {
-        //     PlayDialogs(0);
-        //     tipText.text = "Go To The Circle";
-        // }, 2));
     }
-
-    // private IEnumerator DelayMethod(Action action, float delay)
-    // {
-        // yield return new WaitForSeconds(delay);
-        // action.Invoke();
-    // }
 
     public void PauseDirectory()
     {
@@ -88,8 +79,6 @@ public class Chapter2Manager : Singleton<Chapter2Manager>
 
     public void PlayDialogs(int index)
     {
-        // dialogSource.clip = dialogs[index];
-        // dialogSource.Play();
         if (index == 1)
         {
             slowTMP.text = $"Press Y Key To Slow Down the Game \n ({_slowActionPerformed}/{slowTimes})";
@@ -97,38 +86,13 @@ public class Chapter2Manager : Singleton<Chapter2Manager>
 
         if (index == 2)
         {
-            // StartCoroutine(DelayMethod(() =>
-            // {
-                // PlayDialogs(3);
-            // }, dialogs[index].length+2));
             tipText.text = "Keep Your Eyes Open";
-            // AudioSource.PlayClipAtPoint(sirenSfx, playerOrigin.position);
             rainObject.SetActive(Random.Range(0,2) == 1);
         }
         StartCoroutine(WriteText(subtitles[index]));
     }
 
-    private IEnumerator SlowTime(float byValue, bool doSlow = true)
-    {
-        if (doSlow)
-        {
-            while (Time.timeScale > slowValue)
-            {
-                Time.timeScale -= byValue;
-                yield return new WaitForSeconds(0.009f);
-            }
-        }
-        else
-        {
-            while (Time.timeScale < 1)
-            {
-                Time.timeScale += byValue;
-                yield return new WaitForSeconds(0.009f);
-            }
-        }
-    }
-
-    private void SpawnActors()
+    public void SpawnActors()
     {
         foreach (var spawnPoint in spawnPoints)
         {
@@ -148,14 +112,12 @@ public class Chapter2Manager : Singleton<Chapter2Manager>
         }
     }
 
-    // private int _index;
-    //
-    // public void ChangeText(int x)
-    // {
-    //     _index += x;
-    //     if (_index >= subtitles.Length) _index = 0;
-    //     StartCoroutine(WriteText(subtitles[_index]));
-    // }
+    private IEnumerator SlowTime()
+    {
+        Time.timeScale = slowValue;
+        yield return new WaitForSeconds(slowDuration);
+        Time.timeScale = 1f;
+    }
 
     private IEnumerator WriteText(string text)
     {
@@ -172,6 +134,11 @@ public class Chapter2Manager : Singleton<Chapter2Manager>
     public void Clear()
     {
         subtitlesTMP.text = "";
+    }
+
+    public void TimeUp()
+    {
+        // lost the suspect time up
     }
 
     public void Menu()
