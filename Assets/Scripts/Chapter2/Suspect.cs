@@ -10,12 +10,29 @@ public class Suspect : MonoBehaviour
     [SerializeField] private Transform[] destinations;
     [SerializeField] private GameObject[] clues;
     [SerializeField] private Animator animator;
+    [SerializeField] private int maxCluesShow;
 
     [SerializeField] private PlayerInput.ActionEvent onDestinationReached;
 
 
     private void Start()
     {
+        var count = 0;
+        foreach (var clue in clues)
+        {
+            if (Random.Range(0, 2) == 1)
+            {
+                clue.SetActive(true);
+                count++;
+                if (count > Mathf.Min(maxCluesShow, clues.Length))
+                {
+                    break;
+                }
+            }
+            clue.SetActive(false);
+        }
+        
+
         agent.SetDestination(destinations[Random.Range(0, destinations.Length)].position);
     }
 
@@ -33,6 +50,5 @@ public class Suspect : MonoBehaviour
             onDestinationReached.Invoke(default);
             gameObject.SetActive(false);
         }
-        
     }
 }

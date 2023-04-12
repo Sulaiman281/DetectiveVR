@@ -24,6 +24,7 @@ public class ClueObject : MonoBehaviour
         if (!other.CompareTag("MagnifyingGlass")) return;
         if (!visibility.isVisibleToEye) return;
         var script = other.transform.root.GetComponent<ClueFinderGlass>();
+        if (!script.canFindClue) return;
         script.ShowAwardText("XP10+");
         script.onClueFind.Invoke(default);
         _solved = true;

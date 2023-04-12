@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class ClueFinderGlass : MonoBehaviour
 {
+    public bool canFindClue;
     public PlayerInput.ActionEvent onClueFind;
 
     [SerializeField] private Camera cam;

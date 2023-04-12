@@ -635,7 +635,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 59.2
+    m_StopTime: 34.966667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -747,8 +747,8 @@ AnimationClip:
     floatParameter: 0
     intParameter: 3
     messageOptions: 0
-  - time: 59.2
-    functionName: TimeUp
+  - time: 34.966667
+    functionName: GiveActorsDestinationToMove
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -792,7 +792,7 @@ MonoBehaviour:
   - {fileID: -2361221473219034054}
   m_FixedDuration: 0
   m_EditorSettings:
-    m_Framerate: 90
+    m_Framerate: 60
     m_ScenePreview: 1
   m_DurationMode: 0
   m_MarkerTrack: {fileID: 0}

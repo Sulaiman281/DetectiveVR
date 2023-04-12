@@ -1,6 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -12,13 +12,16 @@ public class Chapter2Manager : Singleton<Chapter2Manager>
 {
     [Header("Reference")] [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private Transform[] destinationPoints;
-
+    [SerializeField] private GameObject skipOption;
     [SerializeField] private Transform playerOrigin;
+    [SerializeField] private ClueFinderGlass clueFinder;
+
+    [Header("AudioSfx")]
+    [SerializeField] private AudioClip driveBySfx;
     
     [Header("Actors")]
-    [SerializeField] private Transform actorsParent;
-    [SerializeField] private GameObject[] actorsPrefab;
-    [SerializeField] private int totalActors;
+    [SerializeField] private AIAgent[] actors;
+    [SerializeField] private AudioSource actorsAudio;
 
     [Header("Dialogs")]
     [SerializeField] private AudioClip[] dialogs;
@@ -43,8 +46,18 @@ public class Chapter2Manager : Singleton<Chapter2Manager>
 
     [SerializeField] private PlayableDirector director;
 
+    [Header("Game Timer")]
+    [SerializeField] private int gameTimeSecond = 60;
+    [SerializeField] private GameObject timerPanel;
+    [SerializeField] private TMP_Text timerText;
+    private Coroutine _gameTimer;
+    [SerializeField] private PlayerInput.ActionEvent onGameOver;
+
+    [SerializeField] private int totalCluesToFind;
+    private int _clueFounded;
+
+
     private List<Vector3> _spawnPositions = new();
-    private List<AIAgent> _aiAgent = new();
 
     public Vector3 RandDestination => destinationPoints[Random.Range(0, destinationPoints.Length)].position;
 
@@ -64,7 +77,7 @@ public class Chapter2Manager : Singleton<Chapter2Manager>
         SpawnActors();
         // slowMotionAction.canceled += _ => { Time.timeScale = 1; };
         sunRotation.Rotate(new Vector3(Random.Range(-180, 180), 0, 0));
-
+        timerPanel.SetActive(false);
     }
 
     public void PauseDirectory()
@@ -98,25 +111,68 @@ public class Chapter2Manager : Singleton<Chapter2Manager>
         {
             _spawnPositions.Add(spawnPoint.position);
         }
-
-        for (var i = 0; i < Math.Min(totalActors, actorsPrefab.Length); i++)
+        foreach (var actor in actors)
         {
             var randPos = Random.Range(0, _spawnPositions.Count);
-            var agent = Instantiate(actorsPrefab[i], _spawnPositions[randPos],
-                Quaternion.identity).GetComponent<AIAgent>();
-            agent.transform.SetParent(actorsParent);
+            actor.transform.position = _spawnPositions[randPos];
+            actor.gameObject.SetActive(true);
             _spawnPositions.RemoveAt(randPos);
-            _aiAgent.Add(agent);
-
-            agent.destination = destinationPoints[Random.Range(0, destinationPoints.Length)].position;
+            // actor.destination = destinationPoints[Random.Range(0, destinationPoints.Length)].position;
         }
+
+        var suspectsCat = actors.Where(actor => actor.GetComponent<CluesOnBody>() != null).ToList();
+        var suspect = suspectsCat[Random.Range(0, suspectsCat.Count)].GetComponent<CluesOnBody>();
+        suspect.ShowClues();
     }
+
+    public void GiveActorsDestinationToMove()
+    {
+        actorsAudio.Play();
+        foreach (var actor in actors)
+        {
+            actor.destination = destinationPoints[Random.Range(0, destinationPoints.Length)].position;
+        }
+        director.Stop();
+        skipOption.SetActive(false);
+        // start the game timer
+        timerPanel.SetActive(true);
+        StartCoroutine(ChapterTimer());
+    }
+
+    private IEnumerator ChapterTimer()
+    {
+        for (var i = gameTimeSecond; i >= 0; i--)
+        {
+            if( i % 10 == 0) AudioSource.PlayClipAtPoint(driveBySfx, playerOrigin.position);
+            yield return new WaitForSeconds(1);
+            timerText.text = $"Time Left :({$"{i}".PadLeft(2, '0')})";
+        }
+        // on timer over.
+        GameOver();
+    }
+
 
     private IEnumerator SlowTime()
     {
         Time.timeScale = slowValue;
         yield return new WaitForSeconds(slowDuration);
         Time.timeScale = 1f;
+    }
+
+    public void OnClueFind()
+    {
+        if (_clueFounded++ >= totalCluesToFind)
+        {
+            // game over
+            StopCoroutine(_gameTimer);
+            GameOver();
+        }
+    }
+
+    private void GameOver()
+    {
+        onGameOver.Invoke(default);
+        // show exit door
     }
 
     private IEnumerator WriteText(string text)
@@ -136,9 +192,10 @@ public class Chapter2Manager : Singleton<Chapter2Manager>
         subtitlesTMP.text = "";
     }
 
-    public void TimeUp()
+    public void PlayAgain()
     {
-        // lost the suspect time up
+        instance = null;
+        SceneManager.LoadScene("Chapter2");
     }
 
     public void Menu()
