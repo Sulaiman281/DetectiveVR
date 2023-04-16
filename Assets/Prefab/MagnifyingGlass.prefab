@@ -668,6 +668,7 @@ GameObject:
   - component: {fileID: 8792688727765903545}
   - component: {fileID: 8792688727765903544}
   - component: {fileID: 1914640581156921432}
+  - component: {fileID: 111746677840595336}
   m_Layer: 7
   m_Name: MagnifyingGlass
   m_TagString: MagnifyingGlass
@@ -683,7 +684,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8558121451597354475}
   m_LocalRotation: {x: -0.55453223, y: 0, z: 0, w: 0.83216226}
-  m_LocalPosition: {x: -2.1001, y: 0.401, z: 1.1622}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.39370078, y: 0.39370078, z: 0.39370078}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -755,8 +756,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.055261914, y: 0.27489233, z: 0.055261917}
-  m_Center: {x: 0.0000000046566124, y: 0.13326785, z: -0.00000000745058}
+  m_Size: {x: 0.055261903, y: 0.34303904, z: 0.055261917}
+  m_Center: {x: 0.0000000047311186, y: 0.16734122, z: -0.000000007096678}
 --- !u!54 &8792688727765903545
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -816,14 +817,26 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 111746677840595336}
+        m_TargetAssemblyTypeName: InteractionObject, Assembly-CSharp
+        m_MethodName: OnInteraction
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
-        m_MethodName: PutBackGlass
-        m_Mode: 1
+      - m_Target: {fileID: 111746677840595336}
+        m_TargetAssemblyTypeName: InteractionObject, Assembly-CSharp
+        m_MethodName: OnInteraction
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -923,15 +936,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e58355a911ac8843a5c39a746af9ce9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canFindClue: 1
   onClueFind:
     m_PersistentCalls:
       m_Calls: []
     m_ActionId: 
     m_ActionName: 
-  cam: {fileID: 0}
-  lensCam: {fileID: 416889579}
+  cam: {fileID: 416889579}
+  clip: {fileID: 8300000, guid: 70c19a9a640abb6498a295c433c56879, type: 3}
   awardText: {fileID: 2253994869326269468}
   awardObject: {fileID: 832715868}
+--- !u!114 &111746677840595336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8558121451597354475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b606d122ae71d4444a804b6631260373, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSelectInteraction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 416889579}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_ActionId: 
+    m_ActionName: 
+  onCancelInteraction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 416889579}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 
+    m_ActionName: 
+  grabInteractable: {fileID: 8792688727765903544}
+  attachTrans: {fileID: 1578185565}
+  socketRotation: {x: 0, y: 0, z: 0, w: 1}
+  offSetPosition: {x: 0, y: 0.3, z: 0}
 --- !u!1001 &1438704081
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1104,6 +1168,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &2253994870085993411 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2253994869209408018, guid: 3da37dc1009d102468a4f5d13e0a30e1,
