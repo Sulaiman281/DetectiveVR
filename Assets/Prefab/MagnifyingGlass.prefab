@@ -669,7 +669,7 @@ GameObject:
   - component: {fileID: 8792688727765903544}
   - component: {fileID: 1914640581156921432}
   - component: {fileID: 111746677840595336}
-  m_Layer: 7
+  m_Layer: 20
   m_Name: MagnifyingGlass
   m_TagString: MagnifyingGlass
   m_Icon: {fileID: 0}

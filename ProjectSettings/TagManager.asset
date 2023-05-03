@@ -22,8 +22,8 @@ TagManager:
   - DynamicPose
   - 
   - Clue
-  - 
-  - 
+  - DoorLayer
+  - DoorLayerIgnore
   - 
   - 
   - 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class InventoryMenu : MonoBehaviour
 {
-    [SerializeField] private InventoryItem[] items;
+    [SerializeField] private InventorySlot[] items;
 
     private void OnEnable()
     {
@@ -22,6 +22,13 @@ public class InventoryMenu : MonoBehaviour
 
     private void OnValidate()
     {
-        items = transform.GetComponentsInChildren<InventoryItem>();
+        items = transform.GetComponentsInChildren<InventorySlot>();
     }
+}
+
+public enum ItemType
+{
+    MagnifyingLens,
+    FlashLight,
+    Gun
 }
