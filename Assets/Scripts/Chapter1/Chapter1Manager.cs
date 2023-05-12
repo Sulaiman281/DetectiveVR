@@ -35,7 +35,7 @@ public class Chapter1Manager : Singleton<Chapter1Manager>
         clueMsg.text = $"Find Clues ({clueFound}/3)";
         if (clueFound < totalClues) return;
         AudioSource.PlayClipAtPoint(correctSound ,Camera.main != null ? Camera.main.transform.position: transform.position, 1);
-        playerManager.ShowCanvas(true);
+        // playerManager.ShowCanvas(true);
     }
 
     public void ChangeText(int x)

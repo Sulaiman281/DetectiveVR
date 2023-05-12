@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class InventorySlot : MonoBehaviour
 {
@@ -35,17 +36,34 @@ public class InventorySlot : MonoBehaviour
     //     
     // }
 
+    private XRGrabInteractable _lastInteraction;
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name+" has entered into socket "+other.gameObject.layer +" "+layerNumber);
-        if (other.gameObject.layer == layerNumber)
+        if (!other.TryGetComponent<InteractableObject>(out var obj)) return;
+        if (!obj.itemType.Equals(itemType)) return;
+        _lastInteraction = obj.GetComponent<XRGrabInteractable>();
+        // _lastInteraction.enabled = false;
+        // Debug.Log(other.name+" has entered into socket "+other.gameObject.layer +" "+layerNumber);
+        // if (other.gameObject.layer == layerNumber)
+        // {
+        //     var trans = other.transform;
+        //     trans.SetParent(transform);
+        //     trans.localPosition = new Vector3(0, 0, 0);
+        //     trans.localRotation = Quaternion.Euler(Vector3.zero);
+        //     trans.localScale = itemScale;
+        //     Debug.Log("Grabbable Object");
+        // }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (InputManager.instance.leftController.gripPressedHold)
         {
-            var trans = other.transform;
-            trans.SetParent(transform);
-            trans.localPosition = new Vector3(0, 0, 0);
-            trans.localRotation = Quaternion.Euler(Vector3.zero);
-            trans.localScale = itemScale;
-            Debug.Log("Grabbable Object");
+            
         }
     }
 }

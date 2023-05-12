@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class InteractionObject : MonoBehaviour
+public class InteractableObject : MonoBehaviour
 {
     [SerializeField] private PlayerInput.ActionEvent onSelectInteraction;
     [SerializeField] private PlayerInput.ActionEvent onCancelInteraction;
     [SerializeField] private XRGrabInteractable grabInteractable;
+
+    public ItemType itemType;
     
     [Header("Attach Trans Offset")]
     [SerializeField] private Transform attachTrans;
@@ -55,6 +57,7 @@ public class InteractionObject : MonoBehaviour
         if (interactor == null)
         {
             onCancelInteraction.Invoke(default);
+            // attachTrans.localScale = Vector3.one;
             return;
         }
         // Debug.Log(interactor.transform.name+" Interactor");
@@ -62,6 +65,7 @@ public class InteractionObject : MonoBehaviour
         {
             attachTrans.localRotation = socketRotation;
             attachTrans.localPosition = offSetPosition;
+            // attachTrans.localScale = Vector3.one / 2;
             onCancelInteraction.Invoke(default);
             return;
         }

@@ -1,29 +1,45 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] private InputAction leftPrimaryKeyPressed;
-    
-    [Header("References")]
-    [SerializeField] private GameObject handCanvas;
+    [SerializeField] private PlayerInput.ActionEvent onPlayerStart;
 
-    private void Awake()
+    [SerializeField] private GameObject inventory;
+
+    private void Start()
     {
-        leftPrimaryKeyPressed.Enable();
-        leftPrimaryKeyPressed.started += _ =>
-        {
-            ShowCanvas(true);
-        };
-        leftPrimaryKeyPressed.canceled += _ =>
-        {
-            ShowCanvas(false);
-        };
-       
+        onPlayerStart.Invoke(default);
     }
 
-    public void ShowCanvas(bool value)
+    public void ToggleInventory(bool value)
     {
-        handCanvas.SetActive(value);
+        if (!value)
+            StartCoroutine(DelayAction(() => { inventory.SetActive(false); }, 1.5f));
+        else
+        {
+            inventory.SetActive(true);
+        }
+    }
+
+    public IEnumerator DelayAction(Action action, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        action.Invoke();
+    }
+
+    public void ChangeScene(int sceneIndex)
+    {
+        try
+        {
+            SceneManager.LoadScene(sceneIndex);
+        }
+        catch(Exception)
+        {
+            // ignore
+        }
     }
 }

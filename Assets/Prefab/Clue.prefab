@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8256799948561156198}
   m_Layer: 11
   m_Name: Clue
-  m_TagString: Untagged
+  m_TagString: Clue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,7 +61,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scratchTexture: {fileID: 2800000, guid: e64f3a2d692f0664b95092b9a1cfbf3f, type: 3}
   mesh: {fileID: 6412521668520943036}
-  visibility: {fileID: 8963270765943873356}
 --- !u!1001 &1364638788350313902
 PrefabInstance:
   m_ObjectHideFlags: 0

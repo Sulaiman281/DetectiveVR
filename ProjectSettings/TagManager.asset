@@ -9,6 +9,8 @@ TagManager:
   - Marcador
   - Blocks
   - MagnifyingGlass
+  - projectile
+  - Clue
   layers:
   - Default
   - TransparentFX
@@ -16,7 +18,7 @@ TagManager:
   - 
   - Water
   - UI
-  - Player
+  - 
   - IgnorePlayerCollision
   - Player
   - DynamicPose

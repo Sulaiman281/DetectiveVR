@@ -181,20 +181,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c302bd03e7dbc46a10b067b08c5119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lvlName: 
-  lvlImage: {fileID: 0}
+  doorLevel:
+    nextLvlTexture: {fileID: 0}
+    levelName: 
+    lvlNo: 0
+    difficulty: 0
+    top3Players: []
+  nextLvlImage: {fileID: 0}
   doorDifficulty:
   - {fileID: 21300000, guid: 40da6f60dd372314fae1a07ff6d185d1, type: 3}
   - {fileID: 21300000, guid: ff5e8bd0f8fd9b14cbf3db7182da4618, type: 3}
   - {fileID: 21300000, guid: e6f4a36399e6ea646a5c4dfd53bbda0f, type: 3}
   - {fileID: 21300000, guid: 0355ce89d2a5e1f44960b1fe6d09bc7a, type: 3}
   - {fileID: 21300000, guid: f3abef1e8fa39b74c8acba18ac50490e, type: 3}
-  doorPanelUI: {fileID: 8014830612018487679}
-  difficulty: 0
+  difficultyImageUI: {fileID: 8014830612018487679}
+  lvlNoTmp: {fileID: 0}
   levelName: {fileID: 7270889797956810732}
-  playerNameRank1: {fileID: 8164917864687685240}
-  playerNameRank2: {fileID: 2886050511020182327}
-  playerNameRank3: {fileID: 3701206512045184911}
+  leaderboard: []
   onPlayerEnterToDoor:
     m_PersistentCalls:
       m_Calls: []
@@ -847,7 +850,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7944130188361326238}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.125}
+  m_LocalPosition: {x: 0, y: 0, z: -0.078}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children:
