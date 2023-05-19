@@ -1447,6 +1447,7 @@ GameObject:
   - component: {fileID: 8970211664935871823}
   - component: {fileID: 4365667219687319932}
   - component: {fileID: 2139786229272050252}
+  - component: {fileID: 855062712}
   m_Layer: 0
   m_Name: HVR_pistol
   m_TagString: Untagged
@@ -1461,7 +1462,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 221218953510465204}
-  m_LocalRotation: {x: -0, y: -0.70710677, z: -0, w: 0.7071069}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: -0.7071068}
   m_LocalPosition: {x: 0.12859997, y: 1.1640999, z: 28.2148}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1475,7 +1476,7 @@ Transform:
   - {fileID: 8550934601688294693}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: -180, y: 90, z: 180}
 --- !u!114 &221218953510465201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1689,7 +1690,7 @@ MonoBehaviour:
   UpRecoilType: 0
   UpRecoil: {fileID: 221218953213502133}
   BackRecoil: {fileID: 221218953118629323}
-  CurrentForce: {x: 0, y: 0, z: 0}
+  CurrentForce: {x: 0, y: 0.4, z: 0}
   TorqueAxisReversed: 0
 --- !u!114 &221218953510465205
 MonoBehaviour:
@@ -1781,6 +1782,20 @@ MonoBehaviour:
   Data: {fileID: 0}
   Force: 0
   Grabbable: {fileID: 0}
+--- !u!114 &855062712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221218953510465204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b3ab37b4dd2d804b8cfe1851477578b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabbable: {fileID: 221218953510465201}
+  inventorySocket: {fileID: 0}
 --- !u!1 &221218953859129602
 GameObject:
   m_ObjectHideFlags: 0

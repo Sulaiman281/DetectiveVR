@@ -1,54 +1,24 @@
-using Chapter1;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.InputSystem;
+using UnityEngine.Video;
 
 public class MenuManager : MonoBehaviour
 {
-    private void Awake()
+
+    [SerializeField] private VideoPlayer logoPlayer;
+    [SerializeField] private PlayerInput.ActionEvent onLogoPlayingComplete;
+
+    private void Start()
     {
-        InitSound();
-        InitLevels();
+        logoPlayer.Play();
+        Invoke(nameof(LogoFinished), (float)logoPlayer.clip.length);
     }
 
-    #region Menu SoundFX
-
-    [Header("MenuSound")]
-    [SerializeField] private AudioClip buttonSound;
-
-    private void InitSound()
+    private void LogoFinished()
     {
-        var buttons = FindObjectsOfType<Button>(true);
-        foreach (var button in buttons)
-        {
-            button.onClick.AddListener(PlaySound);
-        }
+        onLogoPlayingComplete.Invoke(default);
     }
 
-    private void PlaySound()
-    {
-        if (Camera.main != null) AudioSource.PlayClipAtPoint(buttonSound, Camera.main.transform.position);
-    }
-
-    #endregion
-
-    #region Level
-
-    [Header("Level References")] [SerializeField]
-    private Transform content;
-
-    [SerializeField] private GameObject levelUIPrefab;
-    [SerializeField] private Chapter[] chapters;
-
-    private void InitLevels()
-    {
-        // load levels into UI
-        foreach (var chapter in chapters)
-        {
-            Instantiate(levelUIPrefab, content).GetComponent<LevelUI>().SetChapter(chapter);
-        }
-    }
-
-    #endregion
     public void OpenUrl(string url)
     {
         Application.OpenURL(url);

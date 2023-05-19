@@ -610,6 +610,7 @@ GameObject:
   - component: {fileID: 6573796601068227222}
   - component: {fileID: 6573796601068227223}
   - component: {fileID: 6573796601068227220}
+  - component: {fileID: 1952313324}
   m_Layer: 20
   m_Name: MagnifyingGlass
   m_TagString: Untagged
@@ -624,7 +625,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6573796601068227224}
-  m_LocalRotation: {x: -0, y: -0.70710677, z: -0, w: 0.7071069}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
   m_LocalPosition: {x: 0.12860003, y: 1.1767, z: 28.548601}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -635,7 +636,7 @@ Transform:
   - {fileID: 6573796600889279192}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
 --- !u!114 &6573796601068227226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -865,35 +866,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0aa810faba286b43a21b4b2633aeefe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabbable: {fileID: 6573796601068227226}
   rayTarget: {fileID: 6573796600674898799}
   raySize: {x: 0.08, y: 0.08, z: 2}
   posOffset: {x: 0, y: 0, z: 1.14}
   clueSound: {fileID: 8300000, guid: 70c19a9a640abb6498a295c433c56879, type: 3}
-  actionInput:
-    m_Name: Action Input
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 5caf0b6e-827d-43b0-a647-bb7ecad9cb30
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: f284e92c-d34b-42d6-ac18-7f327aeef768
-      m_Path: <Keyboard>/g
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Action Input
-      m_Flags: 0
-    - m_Name: 
-      m_Id: fd754ab1-c170-4630-8dcb-ea766e89ba51
-      m_Path: <XRController>{RightHand}/triggerPressed
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Action Input
-      m_Flags: 0
-    m_Flags: 0
+  teaseDialogs:
+  - {fileID: 8300000, guid: ae045736d86328548936e1cc3228a26e, type: 3}
+  - {fileID: 8300000, guid: 3a8d727901e6ee1458a6f1de01d82878, type: 3}
+  - {fileID: 8300000, guid: c27fda05fee34d4469b9ed5d782b7014, type: 3}
+  - {fileID: 8300000, guid: e2a1592281f5fac41a1eae746db53205, type: 3}
+  - {fileID: 8300000, guid: 23f8916066929394b9b972ffb6d6fb11, type: 3}
+  - {fileID: 8300000, guid: 5072d3d00c922f143892474affa5ed1c, type: 3}
+  - {fileID: 8300000, guid: 81af3f3ba2913f344aba954799554db8, type: 3}
+--- !u!114 &1952313324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6573796601068227224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b3ab37b4dd2d804b8cfe1851477578b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabbable: {fileID: 6573796601068227226}
+  inventorySocket: {fileID: 0}
 --- !u!1 &8696370566416116646
 GameObject:
   m_ObjectHideFlags: 0
