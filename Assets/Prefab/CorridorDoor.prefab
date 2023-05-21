@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 105231507068125985}
   - component: {fileID: 5168123712491819392}
   - component: {fileID: 4891752012440281667}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: swinging_door_handle_collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1580523669397874156}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: front_handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 3831727248542452404}
   - component: {fileID: 8944556008837868775}
   - component: {fileID: 1436098087745669220}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: swinging_door_frame_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6279099501984833048}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: back_handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 1015003578029863736}
   - component: {fileID: 6253736629412046009}
   - component: {fileID: 7257369857321409988}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: swinging_door_handle_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 8845762038763830866}
   - component: {fileID: 8610393237919634289}
   - component: {fileID: 8589138425766068232}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: level-name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -466,7 +466,7 @@ GameObject:
   - component: {fileID: 3111463936188974458}
   - component: {fileID: 6818085524502088116}
   - component: {fileID: 1670691505471745648}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: swinging_door_door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -592,7 +592,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3580874701220422691}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: back_handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -626,7 +626,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6823691777516425797}
   - component: {fileID: 3091734623543623475}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: swinging_door_door_collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -670,7 +670,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3699724181681878660}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: sfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -705,7 +705,7 @@ GameObject:
   - component: {fileID: 5260631505967634060}
   - component: {fileID: 9162628691840362241}
   - component: {fileID: 5257497276534368536}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: front_handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -917,7 +917,7 @@ GameObject:
   - component: {fileID: 4854122161224219001}
   - component: {fileID: 3218054121341335877}
   - component: {fileID: 1912468457899774088}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: swinging_door_handle_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -998,7 +998,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5870239156205223264}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: swinging_door_frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1033,7 +1033,7 @@ GameObject:
   - component: {fileID: 3477072103094024188}
   - component: {fileID: 532052222677246266}
   - component: {fileID: 7105063733717154204}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: player-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1168,7 +1168,7 @@ GameObject:
   - component: {fileID: 2098952796979731909}
   - component: {fileID: 3792233328628149879}
   - component: {fileID: 120349144067003730}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GrabPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1285,7 +1285,7 @@ GameObject:
   - component: {fileID: 2173524575506081124}
   - component: {fileID: 2660441723413249189}
   - component: {fileID: 2344281858354389099}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: player-3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1420,7 +1420,7 @@ GameObject:
   - component: {fileID: 5257497275712960149}
   - component: {fileID: 5257497275712960151}
   - component: {fileID: 5257497275712960148}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: NextLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1498,7 +1498,7 @@ GameObject:
   - component: {fileID: 5257497275767238284}
   - component: {fileID: 5257497275767238285}
   - component: {fileID: 5257497275767238282}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: DoorUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1618,7 +1618,7 @@ GameObject:
   - component: {fileID: 6479932203256437773}
   - component: {fileID: 6479932203256437772}
   - component: {fileID: 7832927620093476826}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CorridorDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1726,7 +1726,7 @@ GameObject:
   - component: {fileID: 5038070467813690140}
   - component: {fileID: 1406547835084098624}
   - component: {fileID: 551666395038098709}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: swinging_door_frame_collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1810,7 +1810,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1001451984288450819}
   - component: {fileID: 528070703161474690}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GrabPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1854,7 +1854,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7887112430395816144}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Top3Players
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1895,7 +1895,7 @@ GameObject:
   - component: {fileID: 2067376664936023727}
   - component: {fileID: 3399233276898004069}
   - component: {fileID: 9002618284197156507}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1974,7 +1974,7 @@ GameObject:
   - component: {fileID: 5671110121611433967}
   - component: {fileID: 2656785554949144265}
   - component: {fileID: 7531803519234630178}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: swinging_door_door_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2060,7 +2060,7 @@ GameObject:
   - component: {fileID: 5267641885738814665}
   - component: {fileID: 8373588967376520904}
   - component: {fileID: 4461527424771919552}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: swinging_door_handle_collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2145,7 +2145,7 @@ GameObject:
   - component: {fileID: 2881607646037810040}
   - component: {fileID: 1210455773517044921}
   - component: {fileID: 4312359360651771091}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: player-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2279,7 +2279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6452572899804772132}
   - component: {fileID: 7727739316710069121}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GrabPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2327,7 +2327,7 @@ GameObject:
   - component: {fileID: 1052585555345897023}
   - component: {fileID: 3781548499179842133}
   - component: {fileID: 1264704860779041441}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: back_handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2540,7 +2540,7 @@ GameObject:
   - component: {fileID: 4472609539548819867}
   - component: {fileID: 8185084852040463173}
   - component: {fileID: 5141096121350942390}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: levelNo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2677,7 +2677,7 @@ GameObject:
   - component: {fileID: 1552372255474863202}
   - component: {fileID: 1356732336481111152}
   - component: {fileID: 3922129590795114905}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: swinging_door_handle_collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2762,7 +2762,7 @@ GameObject:
   - component: {fileID: 8389854829244932926}
   - component: {fileID: 3439723642226224571}
   - component: {fileID: 5730138509667332287}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: swinging_door_handle_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2848,7 +2848,7 @@ GameObject:
   - component: {fileID: 1127736809683434091}
   - component: {fileID: 5554279534449445647}
   - component: {fileID: 3307193035570660722}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2980,7 +2980,7 @@ GameObject:
   - component: {fileID: 3176853994405120197}
   - component: {fileID: 5297423734399785008}
   - component: {fileID: 543956302081993588}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GrabPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

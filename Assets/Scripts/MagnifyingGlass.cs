@@ -2,11 +2,13 @@ using System;
 using System.Linq;
 using HurricaneVR.Framework.Core;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
 public class MagnifyingGlass : MonoBehaviour
 {
-
+    [Header("Events")] [SerializeField] private PlayerInput.ActionEvent onClueFound;
+    
     [Header("Ref")] [SerializeField] private HVRGrabbable grabbable;
     [SerializeField] private Transform rayTarget;
     [SerializeField] private Vector3 raySize;
@@ -38,11 +40,14 @@ public class MagnifyingGlass : MonoBehaviour
                 return;
             }
 
-            foreach (var clueObj in clueObjects)
-            {
-                clueObj.transform.GetComponent<ClueObject>().solved = true;
-                AudioSource.PlayClipAtPoint(clueSound, transform.position, .8f);
-            }
+            clueObjects[0].GetComponent<ClueObject>().solved = true;
+            AudioSource.PlayClipAtPoint(clueSound, transform.position, .8f);
+            onClueFound.Invoke(default);
+
+            // foreach (var clueObj in clueObjects)
+            // {
+                // clueObj.transform.GetComponent<ClueObject>().solved = true;
+            // }
         }
         catch(Exception e)
         {

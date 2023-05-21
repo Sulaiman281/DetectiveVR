@@ -1,84 +1,113 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Playables;
-using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class Chapter1Manager : Singleton<Chapter1Manager>
 {
-    [SerializeField] private TMP_Text subtitlesTMP;
-    [SerializeField] private string[] dialogsSubtitles;
-    [SerializeField] private PlayableDirector playableDirector;
+    [SerializeField] private PlayerInput.ActionEvent onSceneStart;
+    [SerializeField] private PlayerInput.ActionEvent onGameFail;
+    [SerializeField] private PlayerInput.ActionEvent onGameSuccess;
 
-    [SerializeField] private AudioClip correctSound, wrongSound;
-    [SerializeField] private Transform tip2Obj, tip3Obj;
-    [SerializeField] private TMP_Text msg, tip1, clueMsg;
-
-    public PlayerManager playerManager;
-
-    private int _index = -1;
-
-    public bool findClueStart { get; set; }
-    
-    public int totalClues { set; get; }
-    public int clueFound { set; get; }
-
-    public void FindCluesStart()
+    private void Start()
     {
-        findClueStart = true;
-        playableDirector.Stop();
+        onSceneStart.Invoke(default);
+        
+        startTimer = false;
     }
 
-    public void ClueFound()
+    private void Update()
     {
-        clueFound++;
-        clueMsg.text = $"Find Clues ({clueFound}/3)";
-        if (clueFound < totalClues) return;
-        AudioSource.PlayClipAtPoint(correctSound ,Camera.main != null ? Camera.main.transform.position: transform.position, 1);
-        // playerManager.ShowCanvas(true);
+        UpdateTimer();
     }
 
-    public void ChangeText(int x)
+    #region Timer
+
+    [Header("Timer")] [SerializeField] private TMP_Text timerText;
+    public float seconds;
+
+    public bool startTimer { get; set; }
+
+    private void UpdateTimer()
     {
-        _index += x;
-        if (_index >= dialogsSubtitles.Length) _index = 0;
-        StartCoroutine(WriteText(dialogsSubtitles[_index]));
+        if (!startTimer) return;
+        seconds -= Time.deltaTime;
+        timerText.text = $"Timer: {(int)seconds / 60}:{(int)seconds % 60}";
+        if (!(seconds <= 0)) return;
+        onGameFail.Invoke(default);
+        startTimer = false;
     }
 
-    public void SuspectIsQuality(bool value)
+    #endregion
+
+    #region Clues Checker
+
+    [Header("Clues")] [SerializeField] private MagnifyingGlass lense;
+    [SerializeField] private TMP_Text clueText;
+
+    public int totalClues;
+    public int clueSolved;
+    public bool canCheckClues { get; set; }
+
+    private List<ClueObject> clues;
+
+    public void ClueSetup()
     {
-        if (value)
+        clues = FindObjectsByType<ClueObject>(FindObjectsSortMode.None).ToList();
+        totalClues = clues.Count;
+        clueText.text = $"Find Clues ({clueSolved}/{totalClues}";
+        // Debug.Log(clues.Count);
+    }
+
+    public void CheckClue()
+    {
+        if (!canCheckClues) return;
+        lense.CheckClue();
+    }
+
+    public void FoundClue()
+    {
+        clueSolved = clues.Where(clue => clue.solved).ToList().Count;
+        clueText.text = $"Find Clues ({clueSolved}/{totalClues}";
+    }
+
+    public void SuspectDecision(bool guilty)
+    {
+        if (clueSolved < 2)
         {
-            if (clueFound < 2)
-            {
-                AudioSource.PlayClipAtPoint(wrongSound ,Camera.main != null ? Camera.main.transform.position: transform.position, 1);
-                tip2Obj.gameObject.SetActive(false);
-                tip3Obj.gameObject.SetActive(true);
-                msg.text = "You Haven't Found Enough Clues";
-                Invoke(nameof(OneMoreChance), 2.5f);
-            }
-            else
-            {
-                AudioSource.PlayClipAtPoint(correctSound ,Camera.main != null ? Camera.main.transform.position: transform.position, 1);
-                tip2Obj.gameObject.SetActive(false);
-                tip3Obj.gameObject.SetActive(true);
-                msg.text = "Great Detective! You Solved the Case.";
-            }
+            onGameFail.Invoke(default);
         }
         else
         {
-            AudioSource.PlayClipAtPoint(wrongSound ,Camera.main != null ? Camera.main.transform.position: transform.position, 1);
-            tip2Obj.gameObject.SetActive(false);
-            tip3Obj.gameObject.SetActive(true);
-            msg.text = "You Might Have Miss a Clue Detective! You Lost.";
+            if (guilty)
+            {
+                onGameSuccess.Invoke(default);
+            }
+            else
+            {
+                onGameFail.Invoke(default);
+            }
         }
     }
 
-    private void OneMoreChance()
+    #endregion
+
+
+    #region Dialogs
+
+    [Header("Dialogs")] [SerializeField] private TMP_Text subtitlesTMP;
+    [SerializeField] private string[] dialogsSubtitles;
+
+    private int _dialogIndex = -1;
+
+    public void PlayDialog()
     {
-        tip2Obj.gameObject.SetActive(true);
-        tip3Obj.gameObject.SetActive(false);
-        msg.text = "";
+        _dialogIndex++;
+        if (_dialogIndex >= dialogsSubtitles.Length) return;
+        StartCoroutine(WriteText(dialogsSubtitles[_dialogIndex]));
     }
 
     private IEnumerator WriteText(string text)
@@ -91,14 +120,24 @@ public class Chapter1Manager : Singleton<Chapter1Manager>
         }
     }
 
-    public void Clear()
+    public void ClearSubtitles()
     {
         subtitlesTMP.text = "";
     }
 
-    public void Menu()
+    #endregion
+
+    #region background music
+
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip backgroundMusic;
+
+    public void PlayBgMusic()
     {
-        instance = null;
-        SceneManager.LoadScene("Menu");
+        audioSource.clip = backgroundMusic;
+        audioSource.loop = true;
+        audioSource.Play();
     }
+
+    #endregion
 }
