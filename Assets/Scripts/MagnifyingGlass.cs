@@ -67,10 +67,10 @@ public class MagnifyingGlass : MonoBehaviour
         }
     }
 
-    //
-    // void OnDrawGizmos()
-    // {
-    //     Gizmos.color = Color.yellow;
-    //     Gizmos.DrawWireCube(rayTarget.TransformPoint(posOffset), raySize);
-    // }
+    
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(rayTarget.TransformPoint(posOffset), raySize);
+    }
 }

@@ -866,10 +866,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0aa810faba286b43a21b4b2633aeefe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onClueFound:
+    m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 
+    m_ActionName: 
   grabbable: {fileID: 6573796601068227226}
   rayTarget: {fileID: 6573796600674898799}
-  raySize: {x: 0.08, y: 0.08, z: 2}
-  posOffset: {x: 0, y: 0, z: 1.14}
+  raySize: {x: 0.08, y: 0.08, z: 0.7}
+  posOffset: {x: 0, y: 0, z: 0.4}
   clueSound: {fileID: 8300000, guid: 70c19a9a640abb6498a295c433c56879, type: 3}
   teaseDialogs:
   - {fileID: 8300000, guid: ae045736d86328548936e1cc3228a26e, type: 3}

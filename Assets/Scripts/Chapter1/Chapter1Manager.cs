@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +9,7 @@ public class Chapter1Manager : Singleton<Chapter1Manager>
 {
     [SerializeField] private PlayerInput.ActionEvent onSceneStart;
     [SerializeField] private PlayerInput.ActionEvent onGameFail;
+    [SerializeField] private PlayerInput.ActionEvent onTimesUp;
     [SerializeField] private PlayerInput.ActionEvent onGameSuccess;
 
     private void Start()
@@ -35,9 +35,9 @@ public class Chapter1Manager : Singleton<Chapter1Manager>
     {
         if (!startTimer) return;
         seconds -= Time.deltaTime;
-        timerText.text = $"Timer: {(int)seconds / 60}:{(int)seconds % 60}";
+        timerText.text = $"Timer: {$"{(int)seconds / 60}".PadLeft(2, '0')}:{$"{(int)seconds % 60}".PadLeft(2, '0')}";
         if (!(seconds <= 0)) return;
-        onGameFail.Invoke(default);
+        onTimesUp.Invoke(default);
         startTimer = false;
     }
 
@@ -58,7 +58,7 @@ public class Chapter1Manager : Singleton<Chapter1Manager>
     {
         clues = FindObjectsByType<ClueObject>(FindObjectsSortMode.None).ToList();
         totalClues = clues.Count;
-        clueText.text = $"Find Clues ({clueSolved}/{totalClues}";
+        clueText.text = $"Find Clues ({clueSolved}/{totalClues})";
         // Debug.Log(clues.Count);
     }
 
@@ -71,7 +71,7 @@ public class Chapter1Manager : Singleton<Chapter1Manager>
     public void FoundClue()
     {
         clueSolved = clues.Where(clue => clue.solved).ToList().Count;
-        clueText.text = $"Find Clues ({clueSolved}/{totalClues}";
+        clueText.text = $"Find Clues ({clueSolved}/{totalClues})";
     }
 
     public void SuspectDecision(bool guilty)
@@ -96,37 +96,37 @@ public class Chapter1Manager : Singleton<Chapter1Manager>
     #endregion
 
 
-    #region Dialogs
-
-    [Header("Dialogs")] [SerializeField] private TMP_Text subtitlesTMP;
-    [SerializeField] private string[] dialogsSubtitles;
-
-    private int _dialogIndex = -1;
-
-    public void PlayDialog()
-    {
-        _dialogIndex++;
-        if (_dialogIndex >= dialogsSubtitles.Length) return;
-        StartCoroutine(WriteText(dialogsSubtitles[_dialogIndex]));
-    }
-
-    private IEnumerator WriteText(string text)
-    {
-        subtitlesTMP.text = "";
-        foreach (var t in text)
-        {
-            subtitlesTMP.text += t;
-            yield return new WaitForSeconds(0.03f); // Change the duration to set the speed of the typing effect
-        }
-    }
-
-    public void ClearSubtitles()
-    {
-        subtitlesTMP.text = "";
-    }
-
-    #endregion
-
+    // #region Dialogs
+    //
+    // [Header("Dialogs")] [SerializeField] private TMP_Text subtitlesTMP;
+    // [SerializeField] private string[] dialogsSubtitles;
+    //
+    // public int dialogIndex = -1;
+    //
+    // public void PlayDialog()
+    // {
+    //     dialogIndex++;
+    //     if (dialogIndex >= dialogsSubtitles.Length) return;
+    //     StartCoroutine(WriteText(dialogsSubtitles[dialogIndex]));
+    // }
+    //
+    // private IEnumerator WriteText(string text)
+    // {
+    //     subtitlesTMP.text = "";
+    //     foreach (var t in text)
+    //     {
+    //         subtitlesTMP.text += t;
+    //         yield return new WaitForSeconds(0.03f); // Change the duration to set the speed of the typing effect
+    //     }
+    // }
+    //
+    // public void ClearSubtitles()
+    // {
+    //     subtitlesTMP.text = "";
+    // }
+    //
+    // #endregion
+    //
     #region background music
 
     [SerializeField] private AudioSource audioSource;

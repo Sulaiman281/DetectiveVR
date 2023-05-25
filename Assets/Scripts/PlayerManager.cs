@@ -25,7 +25,7 @@ public class PlayerManager : MonoBehaviour
                 inventoryUI.SetActive(false);
                 inventorySockets.SetActive(false);
                 options.SetActive(false);
-            }, 1.5f));
+            }, 2.5f));
         else
         {
             inventoryUI.SetActive(true);
@@ -43,27 +43,34 @@ public class PlayerManager : MonoBehaviour
     public void ChangeScene(string sceneName)
     {
         ToggleInventory(true);
-        try
+        StartCoroutine(DelayAction(() =>
         {
-            var operation = SceneManager.LoadSceneAsync("Scenes/SceneLoader");
-            operation.completed += asyncOperation =>
+            try
             {
-                var sceneLoader = FindObjectOfType<SceneLoader>();
-                if (sceneLoader != null)
+                var operation = SceneManager.LoadSceneAsync("Scenes/SceneLoader");
+                operation.completed += asyncOperation =>
                 {
-                    var task = sceneLoader.NextScene(sceneName); // Store the returned Task
-                    // Handle the task as needed
-                }
-                else
-                {
-                    Debug.LogError("SceneLoader not found in the SceneLoader scene!");
-                }
-            };
-        }
-        catch (Exception exception)
-        {
-            Debug.LogError("An error occurred while changing the scene: " + exception.Message);
-        }
+                    var sceneLoader = FindObjectOfType<SceneLoader>();
+                    if (sceneLoader != null)
+                    {
+                        var task = sceneLoader.NextScene(sceneName); // Store the returned Task
+                        // Handle the task as needed
+                    }
+                    else
+                    {
+                        Debug.LogError("SceneLoader not found in the SceneLoader scene!");
+                    }
+                };
+            }
+            catch (Exception exception)
+            {
+                Debug.LogError("An error occurred while changing the scene: " + exception.Message);
+            }
+        }, .5f));
     }
 
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
