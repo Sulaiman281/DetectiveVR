@@ -14,6 +14,7 @@ public class MagnifyingGlass : MonoBehaviour
     [SerializeField] private Vector3 raySize;
     [SerializeField] private Vector3 posOffset;
     [SerializeField] private AudioClip clueSound;
+    [SerializeField] private AudioClip triggerSound;
 
     [Header("Tease Dialogs")] [SerializeField]
     private AudioClip[] teaseDialogs;
@@ -29,6 +30,7 @@ public class MagnifyingGlass : MonoBehaviour
     public void CheckClue()
     {
         if (!grabbable.IsHandGrabbed) return;
+        AudioSource.PlayClipAtPoint(triggerSound, transform.position, .8f);
         try
         {
             var results = new Collider[10];

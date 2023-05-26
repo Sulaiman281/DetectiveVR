@@ -26,6 +26,7 @@ public class SceneLoader : MonoBehaviour
 
     public async Task NextScene(string sceneName)
     {
+        await Task.Delay(3000);
         var operation = SceneManager.LoadSceneAsync(sceneName);
         var quote = quotes[Random.Range(0, quotes.Length)].Split('-');
         quoteTmp.text = quote[0];

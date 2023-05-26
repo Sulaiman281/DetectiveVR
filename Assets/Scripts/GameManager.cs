@@ -13,6 +13,19 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         onSceneStart.Invoke(default);
+
+        // if (!PlayerPrefs.HasKey(DataKeys.TimelineMatrixKey))
+        // {
+        //     var matrics = new TimelineMatrics
+        //     {
+        //         IntroPlayed = false,
+        //         Chapter1DialogPlayed = false
+        //     };
+        //     PlayerPrefs.SetString(DataKeys.TimelineMatrixKey, JsonUtility.ToJson(matrics));
+        //     PlayerPrefs.Save();
+        //     // var json = PlayerPrefs.GetString("TimelineMatrix");
+        //     // var timeline = JsonUtility.FromJson<TimelineMatrics>(json);
+        // }
     }
 
     public async void InitializeUnityService()

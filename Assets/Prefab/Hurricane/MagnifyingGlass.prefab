@@ -476,7 +476,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 3160887
+    m_Bits: 3160983
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: e0fcb8cb239e6034ba8df631cc64c398, type: 2}
   m_TargetDisplay: 0
@@ -868,14 +868,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onClueFound:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Chapter1Manager, Assembly-CSharp
+        m_MethodName: FoundClue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 
     m_ActionName: 
   grabbable: {fileID: 6573796601068227226}
   rayTarget: {fileID: 6573796600674898799}
-  raySize: {x: 0.08, y: 0.08, z: 0.7}
-  posOffset: {x: 0, y: 0, z: 0.4}
+  raySize: {x: 0.08, y: 0.08, z: 0.45}
+  posOffset: {x: 0, y: 0, z: 0.26}
   clueSound: {fileID: 8300000, guid: 70c19a9a640abb6498a295c433c56879, type: 3}
+  triggerSound: {fileID: 8300000, guid: 4f4c9916a1bb1134ba15a0c0d2f5587a, type: 3}
   teaseDialogs:
   - {fileID: 8300000, guid: ae045736d86328548936e1cc3228a26e, type: 3}
   - {fileID: 8300000, guid: 3a8d727901e6ee1458a6f1de01d82878, type: 3}

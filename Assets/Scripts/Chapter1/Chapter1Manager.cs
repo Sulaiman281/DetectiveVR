@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -8,7 +7,6 @@ using UnityEngine.InputSystem;
 public class Chapter1Manager : Singleton<Chapter1Manager>
 {
     [SerializeField] private PlayerInput.ActionEvent onSceneStart;
-    [SerializeField] private PlayerInput.ActionEvent onGameFail;
     [SerializeField] private PlayerInput.ActionEvent onTimesUp;
     [SerializeField] private PlayerInput.ActionEvent onGameSuccess;
 
@@ -27,7 +25,10 @@ public class Chapter1Manager : Singleton<Chapter1Manager>
     #region Timer
 
     [Header("Timer")] [SerializeField] private TMP_Text timerText;
+    [SerializeField] private AudioClip clockTickingSfx;
     public float seconds;
+
+    private bool _playedClockTickingSfx;
 
     public bool startTimer { get; set; }
 
@@ -36,8 +37,14 @@ public class Chapter1Manager : Singleton<Chapter1Manager>
         if (!startTimer) return;
         seconds -= Time.deltaTime;
         timerText.text = $"Timer: {$"{(int)seconds / 60}".PadLeft(2, '0')}:{$"{(int)seconds % 60}".PadLeft(2, '0')}";
+        if (seconds < 17 && !_playedClockTickingSfx)
+        {
+            AudioSource.PlayClipAtPoint(clockTickingSfx, PlayerSfxManager.instance.transform.position);
+            _playedClockTickingSfx = true;
+        }
         if (!(seconds <= 0)) return;
-        onTimesUp.Invoke(default);
+        if(clueSolved > 1) onGameSuccess.Invoke(default);
+        else onTimesUp.Invoke(default);
         startTimer = false;
     }
 
@@ -56,6 +63,7 @@ public class Chapter1Manager : Singleton<Chapter1Manager>
 
     public void ClueSetup()
     {
+        canCheckClues = true;
         clues = FindObjectsByType<ClueObject>(FindObjectsSortMode.None).ToList();
         totalClues = clues.Count;
         clueText.text = $"Find Clues ({clueSolved}/{totalClues})";
@@ -72,26 +80,30 @@ public class Chapter1Manager : Singleton<Chapter1Manager>
     {
         clueSolved = clues.Where(clue => clue.solved).ToList().Count;
         clueText.text = $"Find Clues ({clueSolved}/{totalClues})";
+        if (clueSolved >= totalClues)
+        {
+            onGameSuccess.Invoke(default);
+        }
     }
 
-    public void SuspectDecision(bool guilty)
-    {
-        if (clueSolved < 2)
-        {
-            onGameFail.Invoke(default);
-        }
-        else
-        {
-            if (guilty)
-            {
-                onGameSuccess.Invoke(default);
-            }
-            else
-            {
-                onGameFail.Invoke(default);
-            }
-        }
-    }
+    // public void SuspectDecision(bool guilty)
+    // {
+    //     if (clueSolved < 2)
+    //     {
+    //         onGameFail.Invoke(default);
+    //     }
+    //     else
+    //     {
+    //         if (guilty)
+    //         {
+    //             onGameSuccess.Invoke(default);
+    //         }
+    //         else
+    //         {
+    //             onGameFail.Invoke(default);
+    //         }
+    //     }
+    // }
 
     #endregion
 
