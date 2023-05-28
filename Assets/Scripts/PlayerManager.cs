@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject inventoryUI;
     [SerializeField] private GameObject inventorySockets;
     [SerializeField] private GameObject options;
+    public float inventoryHideDelay { get; set; }
 
     private void Start()
     {
@@ -25,7 +26,7 @@ public class PlayerManager : MonoBehaviour
                 inventoryUI.SetActive(false);
                 inventorySockets.SetActive(false);
                 options.SetActive(false);
-            }, 2.5f));
+            }, inventoryHideDelay));
         else
         {
             inventoryUI.SetActive(true);
@@ -38,6 +39,14 @@ public class PlayerManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         action.Invoke();
+    }
+
+    public void BackToMindPalace()
+    {
+        PlayerPrefs.SetInt("BTM", 10);
+        PlayerPrefs.Save();
+        
+        SceneManager.LoadScene("Scenes/MindPalace");
     }
 
     public void ChangeScene(string sceneName)

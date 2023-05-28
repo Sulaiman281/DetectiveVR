@@ -7,13 +7,24 @@ using UnityEngine.InputSystem;
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private PlayerInput.ActionEvent onSceneStart;
+    [SerializeField] private PlayerInput.ActionEvent onBackToMenu;
 
     [SerializeField] private PlayerInput.ActionEvent onUnityServiceConnected;
-    
+
     private void Start()
     {
+        if (PlayerPrefs.HasKey("BTM"))
+        {
+            var value = PlayerPrefs.GetInt("BTM");
+            if (value == 10)
+            {
+                onBackToMenu.Invoke(default);
+                PlayerPrefs.SetInt("BTM", 0);
+                PlayerPrefs.Save();
+                return;
+            }
+        }
         onSceneStart.Invoke(default);
-
         // if (!PlayerPrefs.HasKey(DataKeys.TimelineMatrixKey))
         // {
         //     var matrics = new TimelineMatrics
@@ -35,7 +46,7 @@ public class GameManager : Singleton<GameManager>
             await UnityServices.InitializeAsync();
 
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
-            
+
             onUnityServiceConnected.Invoke(default);
         }
         catch (Exception e)

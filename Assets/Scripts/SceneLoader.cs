@@ -15,22 +15,22 @@ public class SceneLoader : MonoBehaviour
     [Header("Value")]
     [Range(0, 100)] [SerializeField] private float loadingOperationValue;
     [Range(0, 25)] [SerializeField] private int quoteIndex;
-    
-    private void OnValidate()
-    {
-        loadingSlider.value = loadingOperationValue;
-        var quote = quotes[quoteIndex].Split('-');
-        quoteTmp.text = quote[0];
-        authorTmp.text = quote[1];
-    }
+    //
+    // private void OnValidate()
+    // {
+    //     loadingSlider.value = loadingOperationValue;
+    //     var quote = quotes[quoteIndex].Split('-');
+    //     quoteTmp.text = quote[0];
+    //     authorTmp.text = quote[1];
+    // }
 
     public async Task NextScene(string sceneName)
     {
-        await Task.Delay(3000);
-        var operation = SceneManager.LoadSceneAsync(sceneName);
         var quote = quotes[Random.Range(0, quotes.Length)].Split('-');
         quoteTmp.text = quote[0];
         authorTmp.text = quote[1];
+        await Task.Delay(5000);
+        var operation = SceneManager.LoadSceneAsync(sceneName);
         while (!operation.isDone)
         {
             var progress = operation.progress / 0.9f * 100;

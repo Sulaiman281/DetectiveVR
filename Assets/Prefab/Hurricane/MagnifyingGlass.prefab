@@ -885,8 +885,8 @@ MonoBehaviour:
     m_ActionName: 
   grabbable: {fileID: 6573796601068227226}
   rayTarget: {fileID: 6573796600674898799}
-  raySize: {x: 0.08, y: 0.08, z: 0.45}
-  posOffset: {x: 0, y: 0, z: 0.26}
+  raySize: {x: 0.08, y: 0.08, z: 0.3}
+  posOffset: {x: 0, y: 0, z: 0.17333333}
   clueSound: {fileID: 8300000, guid: 70c19a9a640abb6498a295c433c56879, type: 3}
   triggerSound: {fileID: 8300000, guid: 4f4c9916a1bb1134ba15a0c0d2f5587a, type: 3}
   teaseDialogs:
